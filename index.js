@@ -2,9 +2,13 @@ const e = require('express');
 const express = require('express')
 const port = 8000;
 const app = express();
+const path = require('path')
 
-app.get('/',(req,res)=>{
-    res.send("<h1>The App is running smoothly</h1>")
+app.set('view engine','ejs')
+app.set('views',path.join(__dirname,'/views'))
+
+app.get('/',(req,res)=>{ 
+    res.render('index');
 })
 
 app.listen(port,(err,success)=>{
